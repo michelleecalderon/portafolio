@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Text Crypter</title>
+</head>
+<body>
+  <h1>Text Crypter</h1>
+
+  <label for="input">Text:</label>
+  <textarea id="input" rows="4" cols="50"></textarea>
+
+  <button onclick="encrypt()">Encrypt</button>
+  <button onclick="decrypt()">Decrypt</button>
+  <button onclick="copyText()">Copy Text</button>
+
+  <label for="output">Output:</label>
+  <textarea id="output" rows="4" cols="50"></textarea>
+
+  <script>
+    function encrypt() {
+      var inputText = document.getElementById("input").value;
+      var encryptedText = btoa(inputText);
+      document.getElementById("output").value = encryptedText;
+    }
+
+    function decrypt() {
+      var encryptedText = document.getElementById("output").value;
+      var decryptedText = atob(encryptedText);
+      document.getElementById("input").value = decryptedText;
+    }
+
+    function copyText() {
+      var outputText = document.getElementById("output");
+      outputText.select();
+      document.execCommand("copy");
+      alert("Text copied!");
+    }
+  </script>
+</body>
+</html>
